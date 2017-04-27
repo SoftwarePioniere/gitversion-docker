@@ -1,20 +1,53 @@
-#Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# What is GitVersion
 
-#Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+GitVersion is a tool to help you achieve *Semantic Versioning* on your project.
 
-#Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+* [GitVersion Project homepage](https://github.com/GitTools/GitVersion)
 
-#Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+Using in Powershell:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+```
+docker run --rm -v "$(PWD):/src" tboeker/gitversion
+```
+
+Commands:
+
+## show
+Display the GitVersion Info
+
+```
+docker run --rm -v "$(PWD):/src" tboeker/gitversion show
+```
+
+
+## json
+Writes the GitVersion Info to GitVersion.json file
+
+```
+docker run --rm -v "$(PWD):/src" tboeker/gitversion json
+```
+
+## bash 
+Run bash and use GitVersion.exe
+
+```
+docker run --rm  -it -v "$(PWD):/src"  tboeker/gitversion bash
+git-version /?
+```
+
+# Building and local test
+
+```
+#Build the Container:
+docker build -t gitversion-work .
+#Run the Container 
+docker run --rm -v "$(PWD):/src" gitversion-work json
+docker run --rm -v "$(PWD):/src" gitversion-work show
+docker run --rm  -it -v "$(PWD):/src" gitversion-work bash
+
+#Login to docker
+docker login
+docker tag gitversion-work tboeker/gitversion:latest
+docker push tboeker/gitversion:latest
+
+```

@@ -1,0 +1,9 @@
+#mode: Mainline
+mode: ContinuousDelivery
+branches:
+  master: {}
+  origin/master :
+    tag: ''
+    regex: origin/master
+ignore:
+  sha: []
