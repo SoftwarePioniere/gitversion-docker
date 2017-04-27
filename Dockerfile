@@ -14,18 +14,18 @@ RUN curl -Ls https://github.com/GitTools/GitVersion/releases/download/v4.0.0-bet
 
 COPY GitVersion.yml /usr/lib/GitVersion.yml
 
-#RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" ' > /usr/bin/git-version
-COPY ./scripts/git-version.sh /usr/bin/git-version
+RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" ' > /usr/bin/git-version
+#COPY ./scripts/git-version.sh /usr/bin/git-version
 RUN chmod +x /usr/bin/git-version
 
-#RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" > /src/GitVersion.json' > /usr/bin/json
-COPY ./scripts/json.sh /usr/bin/json
-RUN chmod +x /usr/bin/json
+RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" > /src/GitVersion.json' > /usr/bin/git-version-json
+#COPY ./scripts/json.sh /usr/bin/json
+RUN chmod +x /usr/bin/git-version-json
 
-#RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe' > /usr/bin/show
-COPY ./scripts/show.sh /usr/bin/show
-RUN chmod +x /usr/bin/show
+RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe' > /usr/bin/git-version-show
+#COPY ./scripts/show.sh /usr/bin/show
+RUN chmod +x /usr/bin/git-version-show
 
 WORKDIR "/src"
 
-CMD ["show"]
+CMD ["git-version-show"]

@@ -4,19 +4,12 @@ GitVersion is a tool to help you achieve *Semantic Versioning* on your project.
 
 * [GitVersion Project homepage](https://github.com/GitTools/GitVersion)
 
-Using in Powershell:
-
-```
-docker run --rm -v "$(PWD):/src" tboeker/gitversion
-```
-
-Commands:
 
 ## show
 Display the GitVersion Info
 
 ```
-docker run --rm -v "$(PWD):/src" tboeker/gitversion show
+docker run --rm -v "$(PWD):/src" tboeker/gitversion git-version-show
 ```
 
 
@@ -24,7 +17,7 @@ docker run --rm -v "$(PWD):/src" tboeker/gitversion show
 Writes the GitVersion Info to GitVersion.json file
 
 ```
-docker run --rm -v "$(PWD):/src" tboeker/gitversion json
+docker run --rm -v "$(PWD):/src" tboeker/gitversion git-version-json
 ```
 
 ## bash 
