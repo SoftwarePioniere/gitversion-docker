@@ -12,18 +12,18 @@ RUN curl -Ls https://github.com/GitTools/GitVersion/releases/download/v4.0.0-bet
   && unzip -d /usr/lib/GitVersion tmp.zip \
   && rm tmp.zip
 
-COPY GitVersion.yml /etc
+COPY GitVersion.yml /usr/lib/GitVersion.yml
 
-COPY git-version.sh /usr/bin/git-version
 #RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" ' > /usr/bin/git-version
+COPY git-version.sh /usr/bin/git-version
 RUN chmod +x /usr/bin/git-version
 
-COPY json.sh /usr/bin/json
 #RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe "$@" > /src/GitVersion.json' > /usr/bin/json
+COPY json.sh /usr/bin/json
 RUN chmod +x /usr/bin/json
 
-COPY show.sh /usr/bin/show
 #RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe' > /usr/bin/show
+COPY show.sh /usr/bin/show
 RUN chmod +x /usr/bin/show
 
 WORKDIR "/src"

@@ -1,5 +1,5 @@
 #mode: Mainline
-mode: ContinuousDelivery
+#mode: ContinuousDelivery
 branches:
   master: {}
   origin/master :
