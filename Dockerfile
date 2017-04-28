@@ -1,11 +1,13 @@
-FROM mono
+FROM mono:4.8.0.495
 
 # Install software for GitVersion
-RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots 4.4.2.11/main" | tee /etc/apt/sources.list.d/mono-xamarin.list \
+RUN echo "deb http://download.mono-project.com/repo/debian wheezy/snapshots 4.8.0.495/main" | tee /etc/apt/sources.list.d/mono-xamarin.list \
   && echo "deb http://ftp.debian.org/debian sid main" | tee -a /etc/apt/sources.list \
   && apt-get clean && apt-get update \
-  && apt-get install -y --no-install-recommends unzip git libc6 libc6-dev libc6-dbg \
-  && rm -rf /var/lib/apt/lists/* /tmp/*
+  && apt-get install -y --no-install-recommends unzip git libc6 libc6-dev libc6-dbg jq\
+  && rm -rf /var/lib/apt/lists/* /tmp/* 
+
+
 
 # Install GitVersion
 RUN curl -Ls https://github.com/GitTools/GitVersion/releases/download/v4.0.0-beta.11/GitVersion.CommandLine.4.0.0-beta0011.nupkg -o tmp.zip \ 
@@ -26,6 +28,10 @@ RUN echo '#!/bin/bash\nexec mono /usr/lib/GitVersion/tools/GitVersion.exe' > /us
 #COPY ./scripts/show.sh /usr/bin/show
 RUN chmod +x /usr/bin/git-version-show
 
+
+COPY ./scripts/vsts.sh /usr/bin/git-version-vsts
+RUN chmod +x /usr/bin/git-version-vsts
+
 WORKDIR "/src"
 
-CMD ["git-version-show"]
+CMD ["git-version-vsts"]
