@@ -5,6 +5,12 @@ GitVersion is a tool to help you achieve *Semantic Versioning* on your project.
 * [GitVersion Project homepage](https://github.com/GitTools/GitVersion)
 
 
+## run vsts
+
+```
+docker run --rm -v "$(PWD):/src" tboeker/gitversion 
+```
+
 ## show
 Display the GitVersion Info
 

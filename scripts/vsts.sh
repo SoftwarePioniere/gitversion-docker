@@ -5,6 +5,9 @@ function jsonval {
     echo ${temp##*|}
 }
 echo ":: running vsts script"
+ls
+
+cd /src
 
 echo  ":: running gitversion"
 mono /usr/lib/GitVersion/tools/GitVersion.exe > GitVersion.json
