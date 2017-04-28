@@ -4,13 +4,14 @@ function jsonval {
     temp=`echo $json | sed 's/\\\\\//\//g' | sed 's/[{}]//g' | awk -v k="text" '{n=split($0,a,","); for (i=1; i<=n; i++) print a[i]}' | sed 's/\"\:\"/\|/g' | sed 's/[\,]/ /g' | sed 's/\"//g' | grep -w $prop`
     echo ${temp##*|}
 }
+echo ":: running vsts script"
 
-echo  ":: run gitversion"
+echo  ":: running gitversion"
 mono /usr/lib/GitVersion/tools/GitVersion.exe > GitVersion.json
 
-#echo ":: Writing GitVersion to json variable"
-#json=$(<GitVersion.json)
-#echo $json
+echo ":: writing GitVersion to json variable"
+json=$(<GitVersion.json)
+echo $json
 
 echo ":: reading keys from json file"
 arr=( $(jq 'keys[]' GitVersion.json) )
