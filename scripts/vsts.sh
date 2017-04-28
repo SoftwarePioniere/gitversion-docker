@@ -8,9 +8,9 @@ echo ":: running vsts script"
 echo ":: current dir:"$PWD
 ls -a
 
-echo ":: changing dir to /src"
-cd /src
-ls -a
+#echo ":: changing dir to /src"
+#cd /src
+#ls -a
 
 echo  ":: running gitversion"
 mono /usr/lib/GitVersion/tools/GitVersion.exe > GitVersion.json
