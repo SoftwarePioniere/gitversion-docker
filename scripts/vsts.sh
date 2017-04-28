@@ -6,11 +6,11 @@ function jsonval {
 }
 echo ":: running vsts script"
 echo ":: current dir:"$PWD
-ls -a
+#ls -a
 
-echo ":: changing dir to /src"
-cd /src
-ls -a
+#echo ":: changing dir to /src"
+#cd /src
+#ls -a
 
 echo  ":: running gitversion"
 mono /usr/lib/GitVersion/tools/GitVersion.exe > GitVersion.json
@@ -38,5 +38,7 @@ do
 	echo "##vso[task.setvariable variable=GitVersion.${key};]${val}"
 done
 
-fullSemVer=(  $(jq '.FullSemVer' GitVersion.json) )
-echo "##vso[build.updatebuildnumber]$fullSemVer"
+val=(  $(jq '.FullSemVer' GitVersion.json) )
+val=${val#"\""}
+val=${val%"\""}
+echo "##vso[build.updatebuildnumber]${val}"
