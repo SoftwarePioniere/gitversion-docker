@@ -25,7 +25,9 @@ do
 	val=${val%"\""}
 	echo ":: value:" ${val}
 	
-	echo "##vso[task.setvariable variable=GitVersion.${key};]${val}"
+	echo "Set Variable GitVersion_${key} Value: ${val}"
+
+	echo "##vso[task.setvariable variable=GitVersion_${key};]${val}"
 done
 
 val=(  $(jq '.FullSemVer' GitVersion.json) )
