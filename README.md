@@ -4,10 +4,10 @@ GitVersion is a tool to help you achieve *Semantic Versioning* on your project.
 
 * [GitVersion Project homepage](https://github.com/GitTools/GitVersion)
 
-This Docker Image is inspired by: https://github.com/tboeker/docker-gitversion
+This Docker Image is inspired by: https://github.com/TargetProcess/docker-gitversion
 
 
-## run vsts
+## run with vsts log commands
 
 ```
 docker run --rm -v "$(PWD):/src" tboeker/gitversion 
