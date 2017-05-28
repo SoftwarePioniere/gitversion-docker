@@ -32,6 +32,9 @@ RUN chmod +x /usr/bin/git-version-show
 COPY ./scripts/vsts.sh /usr/bin/git-version-vsts
 RUN chmod +x /usr/bin/git-version-vsts
 
+COPY ./scripts/msbuild.sh /usr/bin/git-version-msbuild
+RUN chmod +x /usr/bin/git-version-msbuild
+
 WORKDIR "/src"
 
 CMD ["git-version-vsts"]
